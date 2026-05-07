@@ -1,0 +1,53 @@
+"""
+Compare the ages of two users and determine who is older.
+"""
+
+def get_user_data(user_number):
+    # Ask for the user's name
+    name = input(f"Enter name of user {user_number}: ")
+    
+    # Keep asking for age until a valid number is entered
+    while True:
+        age_input = input(f"Enter age of user {user_number}: ")
+        
+        try:
+            # Try to convert input to a number
+            age = float(age_input)
+            
+            # If successful, return both name and age
+            return name, age
+        
+        except ValueError:
+            # If conversion fails, notify the user and repeat
+            print("Please enter a valid number.")
+
+
+def get_older_user(name1, age1, name2, age2):
+    # Compare ages and return the name of the older user
+    if age1 > age2:
+        return name1
+    elif age2 > age1:
+        return name2
+    else:
+        # If both ages are equal, return None
+        return None
+
+
+def main():
+    # Get data for both users
+    name1, age1 = get_user_data(1)
+    name2, age2 = get_user_data(2)
+
+    # Determine which user is older
+    older = get_older_user(name1, age1, name2, age2)
+
+    # Print the result
+    if older:
+        print(f"The older user is: {older}")
+    else:
+        print("Both users have the same age.")
+
+
+# Entry point: this block runs only if the script is executed directly
+if __name__ == "__main__":
+    main()
